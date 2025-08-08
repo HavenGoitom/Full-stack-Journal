@@ -45,6 +45,11 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders'
 ]
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8000",          
+    "https://cozypages.onrender.com",  
+]
+
 
 SIMPLE_JWT = {
     "BLACKLIST_AFTER_ROTATION": True,
@@ -70,6 +75,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = 'Journal.urls'
