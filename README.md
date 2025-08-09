@@ -1,4 +1,4 @@
-````markdown
+```markdown
 # 📓 FULL-STACK-JOURNAL
 
 _Transforming Journals with AI-Driven Insights and Secure Authentication_
@@ -80,7 +80,7 @@ cd Backend
 pip install -r requirements.txt
 python manage.py migrate
 python manage.py runserver
-````
+```
 
 ### 2️⃣ Frontend Setup
 
