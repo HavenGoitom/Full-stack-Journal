@@ -24,6 +24,8 @@ import os
 
 SECRET_KEY = os.environ['SECRET_KEY']
 
+
+
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DEBUG', 'False').lower() in ('true', '1', 't')
 
@@ -46,8 +48,9 @@ INSTALLED_APPS = [
     'corsheaders'
 ]
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",          
-    "https://cozypages.onrender.com",  
+    "http://127.0.0.1:8000",         
+    "http://localhost:8000",         
+    "https://cozypages.onrender.com" 
 ]
 
 
