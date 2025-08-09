@@ -1,4 +1,4 @@
-```markdown
+``
 # 📓 FULL-STACK-JOURNAL
 
 _Transforming Journals with AI-Driven Insights and Secure Authentication_
