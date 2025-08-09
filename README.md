@@ -1,4 +1,3 @@
-``
 # 📓 FULL-STACK-JOURNAL
 
 _Transforming Journals with AI-Driven Insights and Secure Authentication_
@@ -112,6 +111,5 @@ npm run dev
 
 This project is licensed under the MIT License.
 
-```
 
 
