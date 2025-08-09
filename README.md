@@ -1,10 +1,7 @@
 # 📓 FULL-STACK-JOURNAL
 
 _Transforming Journals with AI-Driven Insights and Secure Authentication_
-
-![Last Commit](https://img.shields.io/github/last-commit/YourUsername/YourRepoName?color=blue&style=flat)
 ![Python](https://img.shields.io/badge/python-78.1%25-yellow)
-![Languages](https://img.shields.io/github/languages/count/YourUsername/YourRepoName)
 
 ---
 
@@ -21,18 +18,6 @@ _Transforming Journals with AI-Driven Insights and Secure Authentication_
 ![ESLint](https://img.shields.io/badge/ESLint-4B32C3?logo=eslint&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-5A29E4?logo=axios&logoColor=white)
 ![Google Gemini](https://img.shields.io/badge/Google%20Gemini-4285F4?logo=google&logoColor=white)
-
----
-
-## 📑 Table of Contents
-- [Overview](#overview)
-- [Features](#features)
-- [Backend (Django)](#backend-django)
-- [Frontend (React)](#frontend-react)
-- [Installation](#installation)
-- [Usage](#usage)
-- [API Endpoints](#api-endpoints)
-- [License](#license)
 
 ---
 
