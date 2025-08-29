@@ -19,9 +19,10 @@ body {
   background-color: rgb(161, 27, 27);
   padding: 5px 50px;
   border-radius: 15px;
-  margin-left: 110px;
+  margin-left: 50px;
   border: 1px solid;
   color: white;
+  z-index: 100;
 }
 .logo {
   font-weight: bold;
@@ -48,6 +49,8 @@ body {
 }
 .list {
   color: #333;
+  margin-right: 60px;
+  font-weight: bold;
 }
 .nav-elements ul {
   list-style-type: none;
@@ -59,10 +62,13 @@ body {
   text-decoration: none;
   font-size: 18px;
   font-weight: 500;
+    color: rgba(228, 81, 8, 0.897);
+ font-weight: bold;
 }
 .nav-bar a.active {
-  color: rgba(148, 54, 6, 0.897);
+  color: rgba(19, 8, 2, 0.897);
   transition: all 0.7s ease;
+  border: 1px solid;
 }
 /**/
 .app {
@@ -195,4 +201,45 @@ h1 {
   padding: 15px;
   text-align: center;
   -webkit-text-stroke: 1px rgb(130, 93, 93);
+}
+/*auth page*/
+.auth-page{
+  background-color: rgba(235, 182, 91,0.5);
+  height: 100vh;
+   padding-top: 46px;
+}
+.auth-form {
+  background-color: antiquewhite;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 4px 200px rgba(0, 0, 0, 0.5);
+  margin-top: 20px;
+  margin-left: 400px;
+  height: 378px;
+}
+.auth-form input{
+  height: 30px;
+  width: 350px;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid brown;
+  
+}
+.auth-form h2{
+  text-align: center;
+}
+.signup-button{
+background-color: brown;
+border: none ;
+width: 150px;
+height: 30px;
+border-radius: 10px;
+margin-left: 90px;
+color: white;
+}
+.auth-form p{
+  cursor: pointer;
+  text-align: center;
 }

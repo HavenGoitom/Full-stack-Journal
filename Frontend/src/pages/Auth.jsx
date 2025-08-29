@@ -19,34 +19,44 @@ export function Auth() {
           username,
           password,
         });
-        setMessage("✅ Signup successful! You can now sign in.");
+        setMessage(" Signup successful! You can now sign in.");
       } else {
         // Sign In
         const res = await axios.post("https://cozypages.onrender.com/signin/", {
           username,
           password,
         });
-        setMessage(`✅ Welcome back, ${res.data.username || username}!`);
-        console.log("Token:", res.data.token); // save to localStorage if needed
+        setMessage(` Welcome back, ${res.data.username || username}!`);
+        console.log("Token:", res.data.token);
       }
     } catch (err) {
-      setMessage("❌ Error: " + (err.response?.data?.error || "Something went wrong"));
+      setMessage(
+        " Error: " + (err.response?.data?.error || "Something went wrong")
+      );
     }
   };
 
   return (
-    <div style={{ maxWidth: "400px", margin: "auto", padding: "20px" }}>
-      <h2>{isSignup ? "Sign Up" : "Sign In"}</h2>
-      <form onSubmit={handleSubmit}>
+    <div className="auth-page">
+      
+      <form className="auth-form" onSubmit={handleSubmit}>
+        <h2 >{isSignup ? "Sign Up" : "Sign In"}</h2>
         {isSignup && (
-          <input
-            type="email"
-            placeholder="Email"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
+          
+          <>
+            <lable>Email: </lable>
+            <input
+              type="email"
+              placeholder="Email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </>
         )}
+        <br />
+        <lable>Name: </lable>
+
         <input
           type="text"
           placeholder="Username"
@@ -54,6 +64,9 @@ export function Auth() {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
+        <br />
+        <lable>Password: </lable>
+
         <input
           type="password"
           placeholder="Password"
@@ -61,14 +74,17 @@ export function Auth() {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <button type="submit">{isSignup ? "Sign Up" : "Sign In"}</button>
+        <br />
+        <button className="signup-button" type="submit">
+          {isSignup ? "Sign Up" : "Sign In"}
+        </button>
+        <p>{message}</p>
+        <p onClick={() => setIsSignup(!isSignup)}>
+          {isSignup
+            ? "Already have an account? Sign In"
+            : "Don’t have an account? Sign Up"}
+        </p>
       </form>
-
-      <p>{message}</p>
-
-      <button onClick={() => setIsSignup(!isSignup)} style={{ marginTop: "10px" }}>
-        {isSignup ? "Already have an account? Sign In" : "Don’t have an account? Sign Up"}
-      </button>
     </div>
   );
 }
