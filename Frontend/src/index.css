@@ -1,10 +1,70 @@
 body {
   margin: 0;
-  font-family: 'Segoe UI', sans-serif;
-  background: rgb(193, 212, 241);
+  font-family: "Segoe UI", sans-serif;
   color: #333;
 }
+/*nav-bar*/
+.nav-bar {
+  display: flex;
+  gap: 600px;
+  align-items: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 60px;
+  backdrop-filter: blur(5px);
+}
+.login-button {
+  background-color: rgb(161, 27, 27);
+  padding: 5px 50px;
+  border-radius: 15px;
+  margin-left: 110px;
+  border: 1px solid;
+  color: white;
+}
+.logo {
+  font-weight: bold;
+  margin-left: 10px;
+}
+.logo h1 {
+  color: rgb(153, 28, 28);
+  -webkit-text-stroke: 1px rgb(249, 249, 249);
+  font-size: 40px;
+  text-align: center;
+  font-weight: bold;
+  font-family: cursive;
+}
+.nav-elements {
+  display: flex;
+  color: #333;
 
+  flex-direction: row;
+}
+.nav-elements li:hover {
+  opacity: 0.8;
+  transition: all 0.5s ease-in-out;
+  color: #333;
+}
+.list {
+  color: #333;
+}
+.nav-elements ul {
+  list-style-type: none;
+  display: flex;
+  gap: 60px;
+}
+.nav-bar a:link,
+.nav-bar a:visited {
+  text-decoration: none;
+  font-size: 18px;
+  font-weight: 500;
+}
+.nav-bar a.active {
+  color: rgba(148, 54, 6, 0.897);
+  transition: all 0.7s ease;
+}
+/**/
 .app {
   max-width: 1200px;
   margin: auto;
@@ -40,7 +100,7 @@ h1 {
   margin-bottom: 20px;
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.1);
 }
-.add-button{
+.add-button {
   width: 80px;
   height: 30px;
   border: none;
@@ -73,9 +133,66 @@ h1 {
 .detail {
   white-space: pre-wrap;
 }
-.your-journals{
+.your-journals {
   background: rgb(234, 241, 252);
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+/*home page*/
+.homepage {
+  background-image: url("Journal-homepage.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  height: 92vh;
+  padding-top: 46px; /* equal to navbar height */
+}
+
+.home-bottom {
+  display: flex;
+  margin-top: 0px;
+  justify-content: space-between;
+  backdrop-filter: blur(5px);
+  animation: floatUp 4s linear infinite;
+
+  height: 130px;
+  align-items: center;
+  background-color: rgba(51, 51, 51, 0.2);
+}
+@keyframes floatUp {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  50% {
+    transform: translateY(-20px); 
+    opacity: 0.9;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+.home-bottom h3{
+  font-size: 22px;
+  padding: 45px;
+  -webkit-text-stroke: 1px rgb(249, 249, 249);
+}
+.home-bottom span{
+  margin-left: 30px;
+}
+.welcome {
+  color: brown;
+  font-size: 90px;
+  margin-left: 20px;
+  font-weight: bold;
+  font-family: cursive;
+}
+.homepage h2 {
+  font-size: 60px;
+  padding: 15px;
+  text-align: center;
+  -webkit-text-stroke: 1px rgb(130, 93, 93);
 }
