@@ -45,12 +45,14 @@ INSTALLED_APPS = [
     'entries',
     'authentication',
     'rest_framework_simplejwt.token_blacklist',
-    'corsheaders'
+    'corsheaders',
 ]
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",         
     "http://localhost:8000",         
-    "https://cozypages.onrender.com" 
+    "https://cozypages.onrender.com",
+    "https://localhost:3000",
+    "https://cozypages.vercel.app", 
 ]
 
 
