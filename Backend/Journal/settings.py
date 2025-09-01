@@ -50,7 +50,7 @@ INSTALLED_APPS = [
 CORS_ALLOWED_ORIGINS = [
     "http://127.0.0.1:8000",         
     "https://cozypages.onrender.com",
-    "https://localhost:3000",
+    "https://localhost:5173",
     "https://cozypages.vercel.app", 
 ]
 
