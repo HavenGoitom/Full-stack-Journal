@@ -47,12 +47,8 @@ INSTALLED_APPS = [
     'rest_framework_simplejwt.token_blacklist',
     'corsheaders',
 ]
-CORS_ALLOWED_ORIGINS = [
-    "http://127.0.0.1:8000",         
-    "https://cozypages.onrender.com",
-    "https://localhost:5173",
-    "https://cozypages.vercel.app", 
-]
+CORS_ALLOW_ALL_ORIGINS = True
+
 
 
 SIMPLE_JWT = {
@@ -72,6 +68,7 @@ REST_FRAMEWORK = {
 
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
