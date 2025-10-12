@@ -7,7 +7,7 @@ export function HomePage() {
         <span className="welcome">
           Welcome,
           <br />
-        </span>{" "}
+        </span>
         You’re in a Place to write your ideas thoughts or stories
       </h2>
       <div className="home-bottom">

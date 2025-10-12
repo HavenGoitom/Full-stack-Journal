@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 
 export function Auth() {
-  const [isSignup, setIsSignup] = useState(true); // toggle between signup/signin
+  const [isSignup, setIsSignup] = useState(true);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -10,41 +10,64 @@ export function Auth() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setMessage("Loading...");
 
     try {
       if (isSignup) {
-        // Sign Up
-        const res = await axios.post("https://cozypages.onrender.com/signup/", {
-          email,
-          username,
-          password,
-        });
-        setMessage(" Signup successful! You can now sign in.");
+        // --- SIGN UP ---
+        const res = await axios.post(
+          "https://cozypages.onrender.com/signup/",
+          {
+            email,
+            username,
+            password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        console.log("Signup response:", res.data);
+        setMessage("Signup successful! You can now sign in.");
+        setIsSignup(false);
       } else {
-        // Sign In
-        const res = await axios.post("https://cozypages.onrender.com/signin/", {
-          username,
-          password,
-        });
-        setMessage(` Welcome back, ${res.data.username || username}!`);
-        console.log("Token:", res.data.token);
+        // --- SIGN IN ---
+        const res = await axios.post(
+          "https://cozypages.onrender.com/signin/",
+          {
+            username,
+            password,
+          },
+          {
+            headers: { "Content-Type": "application/json" },
+          }
+        );
+
+        localStorage.setItem("access", res.data.access);
+        localStorage.setItem("refresh", res.data.refresh);
+
+        console.log("Signin response:", res.data);
+        setMessage(` Welcome back, ${username}!`);
       }
     } catch (err) {
-      setMessage(
-        " Error: " + (err.response?.data?.error || "Something went wrong")
-      );
+      console.error("Auth error:", err.response?.data);
+      const errorMsg =
+        err.response?.data?.detail ||
+        err.response?.data?.message ||
+        JSON.stringify(err.response?.data) ||
+        "Something went wrong";
+      setMessage(" Error: " + errorMsg);
     }
   };
 
   return (
     <div className="auth-page">
-      
       <form className="auth-form" onSubmit={handleSubmit}>
-        <h2 >{isSignup ? "Sign Up" : "Sign In"}</h2>
+        <h2>{isSignup ? "Sign Up" : "Sign In"}</h2>
+
         {isSignup && (
-          
           <>
-            <lable>Email: </lable>
+            Email:
             <input
               type="email"
               placeholder="Email"
@@ -55,8 +78,7 @@ export function Auth() {
           </>
         )}
         <br />
-        <lable>Name: </lable>
-
+        Name:
         <input
           type="text"
           placeholder="Username"
@@ -65,8 +87,7 @@ export function Auth() {
           required
         />
         <br />
-        <lable>Password: </lable>
-
+        Password:
         <input
           type="password"
           placeholder="Password"
