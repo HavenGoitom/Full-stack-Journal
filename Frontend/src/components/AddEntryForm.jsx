@@ -7,6 +7,8 @@ export function AddEntryForm({ onAdd }) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState("");
 
+  const token = localStorage.getItem("access");
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     if (!title || !content) return;
@@ -15,21 +17,22 @@ export function AddEntryForm({ onAdd }) {
     setError("");
 
     try {
-      const response = await axios.post("https://cozypages.onrender.com/journals/", {
-        title,
-        content,
-      });
+      const res = await axios.post(
+        "https://cozypages.onrender.com/journals/",
+        { title, content },
+        {
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
 
-      const newEntry = response.data;
-
-      if (onAdd) {
-        onAdd(newEntry);
-      }
-
-      // reset form
+      const newEntry = res.data.data; 
+      onAdd(newEntry);
       setTitle("");
       setContent("");
     } catch (err) {
+      console.error("Error adding journal:", err);
       setError(err.response?.data?.message || "Something went wrong");
     } finally {
       setLoading(false);
@@ -58,4 +61,3 @@ export function AddEntryForm({ onAdd }) {
     </form>
   );
 }
-

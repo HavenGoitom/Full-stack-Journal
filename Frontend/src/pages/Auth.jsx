@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import axios from "axios";
 
-export function Auth() {
+export function Auth({ onLoginSuccess }) {
   const [isSignup, setIsSignup] = useState(true);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -17,14 +17,8 @@ export function Auth() {
         // --- SIGN UP ---
         const res = await axios.post(
           "https://cozypages.onrender.com/signup/",
-          {
-            email,
-            username,
-            password,
-          },
-          {
-            headers: { "Content-Type": "application/json" },
-          }
+          { email, username, password },
+          { headers: { "Content-Type": "application/json" } }
         );
 
         console.log("Signup response:", res.data);
@@ -34,20 +28,16 @@ export function Auth() {
         // --- SIGN IN ---
         const res = await axios.post(
           "https://cozypages.onrender.com/signin/",
-          {
-            username,
-            password,
-          },
-          {
-            headers: { "Content-Type": "application/json" },
-          }
+          { username, password },
+          { headers: { "Content-Type": "application/json" } }
         );
 
         localStorage.setItem("access", res.data.access);
         localStorage.setItem("refresh", res.data.refresh);
 
         console.log("Signin response:", res.data);
-        setMessage(` Welcome back, ${username}!`);
+        setMessage(`Welcome back, ${username}!`);
+        onLoginSuccess?.();
       }
     } catch (err) {
       console.error("Auth error:", err.response?.data);
@@ -56,7 +46,7 @@ export function Auth() {
         err.response?.data?.message ||
         JSON.stringify(err.response?.data) ||
         "Something went wrong";
-      setMessage(" Error: " + errorMsg);
+      setMessage("Error: " + errorMsg);
     }
   };
 
