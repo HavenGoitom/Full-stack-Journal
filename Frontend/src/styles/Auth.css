@@ -1,0 +1,45 @@
+.auth-page {
+  background-color: rgba(235, 182, 91, 0.5);
+  height: 100vh;
+  padding-top: 86px;
+}
+
+.auth-form {
+  background-color: antiquewhite;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 350px;
+  box-shadow: 0 4px 10px rgba(163, 27, 27, 0.5);
+  margin: 20px auto;
+  height: 378px;
+}
+
+.auth-form input {
+  height: 30px;
+  width: 100%;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  border: 1px solid brown;
+}
+
+.auth-form h2 {
+  text-align: center;
+}
+
+.signup-button {
+  background-color: brown;
+  border: none;
+  width: 150px;
+  height: 30px;
+  border-radius: 10px;
+  margin: 0 auto;
+  display: block;
+  color: white;
+  cursor: pointer;
+}
+
+.auth-form p {
+  cursor: pointer;
+  text-align: center;
+}

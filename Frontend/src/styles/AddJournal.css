@@ -1,0 +1,72 @@
+.form {
+  background-color: #E4C69D;
+   border-radius: 15px;
+
+box-shadow: 0 8px 20px rgba(177, 75, 75, 0.5),
+    0 0 15px rgba(241, 122, 8, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.2);  margin-bottom: 20px;
+  margin-top: 16px;
+  width: 350px;
+  height: 220px;
+  padding: 3px 50px 13px 30px;
+  border-bottom: 1.5px solid lightblue;
+}
+
+.form input,
+.form textarea {
+  width: 100%;
+  padding: 6px 7px 0px 7px;
+  margin-top: 2px;
+  margin-bottom: 5px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  font-family: inherit;
+  background-color: #fff8ea;
+  box-shadow: 0 8px 20px rgba(177, 75, 75, 0.5),
+    0 0 15px rgba(241, 122, 8, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.title-input {
+  height: 25px;
+}
+.form textarea {
+  height: 30px;
+  overflow-y: auto;
+  max-width: 10px;
+}
+.form h2,
+.your-journals h2 {
+  color: #9d2c29;
+  font-family: f;
+  font-weight: bold;
+}
+.content-input {
+  height: 70px;
+}
+
+.add-button {
+  width: 120px;
+  height: 30px;
+  border: none;
+  border-radius: 20px;
+  background-color: #ae2621;
+  color: white;
+  margin-left: 1px;
+  cursor: pointer;
+  margin-top: 4px;
+  box-shadow: 0 8px 20px rgba(177, 75, 75, 0.5),
+    0 0 15px rgba(241, 122, 8, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.2);
+    border-bottom: 1px solid lightgray;
+    font-weight: bold;
+}
+
+.add-button:hover {
+  background-color: #7a4210;
+  color: #e9eef0;
+  transition: all 0.5s;
+}
+
+.error {
+  color: red;
+  font-size: 13px;
+  text-align: center;
+  margin-bottom: 5px;
+}

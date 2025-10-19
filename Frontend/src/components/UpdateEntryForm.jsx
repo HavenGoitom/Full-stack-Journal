@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export function UpdateEntryForm({ entry, onUpdate, onCancel }) {
   const [title, setTitle] = useState(entry.title);
@@ -20,17 +21,15 @@ export function UpdateEntryForm({ entry, onUpdate, onCancel }) {
       const res = await axios.put(
         `https://cozypages.onrender.com/journals/${entry.id}/update/`,
         { title, content },
-        {
-          headers: {
-            Authorization: `Bearer ${token}`,
-          },
-        }
+        { headers: { Authorization: `Bearer ${token}` } }
       );
-
-      onUpdate(res.data.data); 
+      toast.success("Journal updated successfully!");
+      onUpdate(res.data.data);
     } catch (err) {
       console.error("Error updating journal:", err);
-      setError(err.response?.data?.message || "Something went wrong");
+      const msg = err.response?.data?.message || "Something went wrong";
+      setError(msg);
+      toast.error(msg);
     } finally {
       setLoading(false);
     }

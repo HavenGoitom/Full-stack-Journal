@@ -1,4 +1,5 @@
 import React from "react";
+import "../styles/JournalList.css";
 
 function JournalList({ entries, onSelect }) {
   return (
@@ -7,7 +8,7 @@ function JournalList({ entries, onSelect }) {
       {entries.map((entry) => (
         <div key={entry.id} className="entry-card">
           <h3>{entry.title}</h3>
-          <p className="date">{new Date(entry.created_at).toLocaleString()}</p>
+          
           <div className="actions">
             <button onClick={() => onSelect(entry)}>View</button>
           </div>

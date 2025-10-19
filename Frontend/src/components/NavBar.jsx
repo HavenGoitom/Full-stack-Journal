@@ -1,5 +1,6 @@
 import React from "react";
 import { Link, NavLink } from "react-router-dom";
+import "../styles/HomeAndNav.css";
 
 export function NavBar({ isLoggedIn, onLogout }) {
   return (
@@ -29,7 +30,7 @@ export function NavBar({ isLoggedIn, onLogout }) {
           ) : (
             <li>
               <Link className="login-button" to="/login">
-                Login
+                <span>Login</span>
               </Link>
             </li>
           )}

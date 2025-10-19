@@ -1,9 +1,10 @@
 import React from "react";
+import "../styles/HomeAndNav.css";
 
 export function HomePage() {
   return (
     <div className="homepage">
-      <h2>
+      <h2 className="home-h2">
         <span className="welcome">
           Welcome,
           <br />
@@ -13,18 +14,18 @@ export function HomePage() {
       <div className="home-bottom">
         <div>
           <h3>
-            <span>📝</span><br/>
+            <span></span><br/>
             Add Journals
           </h3>
         </div>
         <div>
           <h3>
-            <span>👀</span><br/>view your Journals
+            <span></span><br/>view your Journals
           </h3>
         </div>
         <div>
           <h3>
-            <span>🤖</span><br/>
+            <span></span><br/>
             Ai revise
           </h3>
         </div>

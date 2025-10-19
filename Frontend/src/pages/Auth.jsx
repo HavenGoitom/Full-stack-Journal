@@ -1,16 +1,21 @@
 import React, { useState } from "react";
 import axios from "axios";
+import "../styles/Auth.css";
+import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
 
 export function Auth({ onLoginSuccess }) {
   const [isSignup, setIsSignup] = useState(true);
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [message, setMessage] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setMessage("Loading...");
+    setLoading(true);
 
     try {
       if (isSignup) {
@@ -20,9 +25,7 @@ export function Auth({ onLoginSuccess }) {
           { email, username, password },
           { headers: { "Content-Type": "application/json" } }
         );
-
-        console.log("Signup response:", res.data);
-        setMessage("Signup successful! You can now sign in.");
+        toast.success("Signup successful! You can now sign in.");
         setIsSignup(false);
       } else {
         // --- SIGN IN ---
@@ -35,18 +38,22 @@ export function Auth({ onLoginSuccess }) {
         localStorage.setItem("access", res.data.access);
         localStorage.setItem("refresh", res.data.refresh);
 
-        console.log("Signin response:", res.data);
-        setMessage(`Welcome back, ${username}!`);
+        toast.success(`Welcome back, ${username}!`);
         onLoginSuccess?.();
+
+        setTimeout(() => {
+          navigate("/journal");
+        }, 200); 
       }
     } catch (err) {
-      console.error("Auth error:", err.response?.data);
       const errorMsg =
         err.response?.data?.detail ||
         err.response?.data?.message ||
         JSON.stringify(err.response?.data) ||
         "Something went wrong";
-      setMessage("Error: " + errorMsg);
+      toast.error(errorMsg);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,7 +64,7 @@ export function Auth({ onLoginSuccess }) {
 
         {isSignup && (
           <>
-            Email:
+            <label>Email:</label>
             <input
               type="email"
               placeholder="Email"
@@ -67,8 +74,8 @@ export function Auth({ onLoginSuccess }) {
             />
           </>
         )}
-        <br />
-        Name:
+
+        <label>Name:</label>
         <input
           type="text"
           placeholder="Username"
@@ -76,8 +83,8 @@ export function Auth({ onLoginSuccess }) {
           onChange={(e) => setUsername(e.target.value)}
           required
         />
-        <br />
-        Password:
+
+        <label>Password:</label>
         <input
           type="password"
           placeholder="Password"
@@ -85,12 +92,21 @@ export function Auth({ onLoginSuccess }) {
           onChange={(e) => setPassword(e.target.value)}
           required
         />
-        <br />
-        <button className="signup-button" type="submit">
-          {isSignup ? "Sign Up" : "Sign In"}
+
+        <button className="signup-button" type="submit" disabled={loading}>
+          {loading
+            ? isSignup
+              ? "Signing Up..."
+              : "Signing In..."
+            : isSignup
+            ? "Sign Up"
+            : "Sign In"}
         </button>
-        <p>{message}</p>
-        <p onClick={() => setIsSignup(!isSignup)}>
+
+        <p
+          onClick={() => setIsSignup(!isSignup)}
+          style={{ cursor: "pointer", color: "#555", marginTop: "12px" }}
+        >
           {isSignup
             ? "Already have an account? Sign In"
             : "Don’t have an account? Sign Up"}

@@ -1,0 +1,62 @@
+.your-journals {
+  background-color: #e4c69d;
+  padding: 1px 20px;
+box-shadow: 0 8px 20px rgba(177, 75, 75, 0.5),
+    0 0 15px rgba(241, 122, 8, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.2);  border-radius: 15px;
+  height: 240px;
+  overflow-y: auto;
+   border-bottom: 1.5px solid lightblue;
+}
+.your-journals::-webkit-scrollbar-thumb {
+  background-color: #ea8825;
+  border-radius: 10px;
+  border: 2px solid #e4dcd2;
+}
+.your-journals::-webkit-scrollbar-track {
+  background: #ecdccf;
+  border-radius: 10px;
+}
+.your-journals::-webkit-scrollbar {
+  width: 8px;
+}
+
+.entry-card {
+  background: white;
+  padding: 0px 15px;
+  margin-bottom: 6px;
+  border-radius: 6px;
+box-shadow: 0 8px 20px rgba(177, 75, 75, 0.5),
+    0 0 15px rgba(241, 122, 8, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.2);  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  
+}
+.entry-card:hover{
+transform: scale(0.98);
+cursor: pointer;
+}
+.actions button {
+  background: #9d2c29;
+ box-shadow: 0 8px 20px rgba(177, 75, 75, 0.5),
+    0 0 15px rgba(241, 122, 8, 0.6) inset, 0 2px 4px rgba(0, 0, 0, 0.2);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: background 0.2s ease;
+}
+
+.actions button:hover {
+  background: #dab327;
+  color: #033951;
+}
+.app {
+  background-color: #fde8c9;
+  background-image: url("/journal-bg.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center bottom;
+  height: 90vh;
+}

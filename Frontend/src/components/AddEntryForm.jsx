@@ -1,20 +1,24 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import "../styles/AddJournal.css";
 
 export function AddEntryForm({ onAdd }) {
   const [title, setTitle] = useState("");
   const [content, setContent] = useState("");
   const [loading, setLoading] = useState(false);
-  const [error, setError] = useState("");
 
   const token = localStorage.getItem("access");
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (!title || !content) return;
+    if (!title || !content) {
+      toast.warning("Please fill in both fields.", { position: "top-center" });
+      return;
+    }
 
     setLoading(true);
-    setError("");
 
     try {
       const res = await axios.post(
@@ -27,37 +31,54 @@ export function AddEntryForm({ onAdd }) {
         }
       );
 
-      const newEntry = res.data.data; 
+      const newEntry = res.data.data;
       onAdd(newEntry);
       setTitle("");
       setContent("");
+      toast.success("Journal added successfully!", { position: "top-center" });
     } catch (err) {
       console.error("Error adding journal:", err);
-      setError(err.response?.data?.message || "Something went wrong");
+      const msg =
+        err.response?.data?.message ||
+        "Something went wrong. Please try again.";
+      toast.error(msg, { position: "top-center" });
     } finally {
       setLoading(false);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} className="form">
-      <h2>Add New Journal</h2>
-      {error && <p className="error">{error}</p>}
-      <input
-        value={title}
-        onChange={(e) => setTitle(e.target.value)}
-        placeholder="Title"
-        disabled={loading}
+    <>
+      <form onSubmit={handleSubmit} className="form">
+        <h2>Add Your Journal</h2>
+        <input
+          value={title}
+          onChange={(e) => setTitle(e.target.value)}
+          placeholder="Title"
+          disabled={loading}
+          className="title-input"
+        />
+        <input
+          value={content}
+          onChange={(e) => setContent(e.target.value)}
+          placeholder="Write something..."
+          disabled={loading}
+          className="content-input"
+        />
+        <button className="add-button" type="submit" disabled={loading}>
+          {loading ? "Adding..." : "Add"}
+        </button>
+      </form>
+
+      <ToastContainer
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        pauseOnHover
+        theme="colored"
+        style={{ marginTop: "70px" }}
       />
-      <textarea
-        value={content}
-        onChange={(e) => setContent(e.target.value)}
-        placeholder="Write something..."
-        disabled={loading}
-      />
-      <button className="add-button" type="submit" disabled={loading}>
-        {loading ? "Adding..." : "Add"}
-      </button>
-    </form>
+    </>
   );
 }
