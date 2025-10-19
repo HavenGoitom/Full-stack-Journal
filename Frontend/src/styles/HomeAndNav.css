@@ -102,9 +102,9 @@
 
 /* Homepage */
 .homepage {
-  background-image: url("Journal-homepage.png");
+ 
   background-image: linear-gradient(rgba(65, 30, 14, 0.4), #b14b4b)
-    url("Journal-homepage.png");
+    url("/Journal-homepage.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
