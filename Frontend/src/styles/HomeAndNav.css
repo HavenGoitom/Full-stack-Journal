@@ -95,16 +95,13 @@
   transform: translateY(-1px);
 }
 
-
 .nav-bar:hover {
   box-shadow: 0 6px 20px rgba(156, 28, 28, 0.15);
 }
 
 /* Homepage */
 .homepage {
- 
-  background-image: linear-gradient(rgba(65, 30, 14, 0.4), #b14b4b)
-    url("/Journal-homepage.png");
+  background-image: url("/Journal-homepage.png");
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
@@ -161,6 +158,5 @@
   padding: 15px;
   text-align: center;
   -webkit-text-stroke: 1px rgb(130, 93, 93);
-    color: #0a082b;
+  color: #0a082b;
 }
-
